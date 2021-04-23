@@ -24,7 +24,7 @@
   "license": "ISC",
   "dependencies": {
     "canvas": "^2.7.0",
-    "chalk": "^4.1.0",
+    "chalk": "^4.1.1",
     "dblapi.js": "^2.4.1",
     "discord.js": "^12.5.1",
     "enmap": "^5.8.4",
