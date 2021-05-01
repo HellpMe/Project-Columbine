@@ -10,7 +10,7 @@ module.exports = async (client, message) => {
     client.messagesSent++;
     
     if(message.author.bot) return;
-    if(message.channel.type === 'DM') return;
+    if(message.channel.type === 'dm') return;
 
     //Puxando do banco de dados o prefixo!
     let prefix = await db.ref(`Configurações/Servidores/${message.guild.id}/Prefixo`).once('value')
