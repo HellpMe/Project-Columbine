@@ -56,17 +56,6 @@ module.exports = class PrCo extends Client {
               return false;
            }
           }
-
-        //Pegando os canais em cache
-        async getChannel(id) {
-          try {
-            const channel = await this.channels.cache.get(id);
-            return channel;
-            } catch (err) {
-            console.log(err.message);
-            return false;
-           }
-          }
         //Setando a atividade do bot
         SetActivity(array = [], type = 'STREAMING') {
             this.Activity = array;
