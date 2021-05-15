@@ -4,10 +4,10 @@ module.exports = Structure.extend('Player', Player => {
 	class player extends Player {
 		constructor(...args) {
 			super(...args);
-			this.musicTrivia = false;
 			this.speed = 1;
-			this.timeout = null;
 			this.twentyFourSeven = false;
+			this.previousTracks = [];
+			this.timeout = null;
 		}
 
 		// adicionando os filtros

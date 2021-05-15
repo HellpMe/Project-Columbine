@@ -67,18 +67,6 @@ module.exports = class PrCo extends Client {
             return false;
            }
           }
-
-        //Setando a atividade do bot
-        async SetStatus(status = 'online') {
-          try {
-        await this.user.setStatus(status);
-            return;
-        } catch (err) {
-            console.log(err.message);
-            return false;
-          }
-         }
-
         //Setando a atividade do bot
         SetActivity(array = [], type = 'STREAMING') {
             this.Activity = array;

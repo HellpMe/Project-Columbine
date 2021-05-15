@@ -6,6 +6,8 @@
   <a href="#3º--links">Links</a>
   •
   <a href="#4º--apoios">Apoios</a>
+    •
+  <a href="https://github.com/HellpMe/Project-Columbine/blob/master/docs/TRANSLATES.md">Apoios</a>
 </p>
 
 ![](//)
@@ -18,7 +20,7 @@ Caso queira fazer Self-Host do projeto iremos precisar dos seguintes recursos.
 
 - [NodeJs Version 14.+](https://nodejs.org/)
 - [Npm Version "*" includes NodeJs](https://nodejs.org/en/download/)
-- Depois de instalado os requisitos listado acima iremos para as <a href="https://github.com/HellpMe/Project-Columbine/blob/master/docs/INSTALLATION.MD">Configurações</a>
+- Depois de instalado os requisitos listado acima iremos para as <a href="https://github.com/HellpMe/Project-Columbine/blob/master/docs/INSTALLATION.md">Configurações</a>
 ---
 ## `3º` **|** Links:
 🔗 Esses são os nossos únicos links. Então preste bastante atenção !!
