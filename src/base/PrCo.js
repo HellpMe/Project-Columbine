@@ -46,16 +46,6 @@ module.exports = class PrCo extends Client {
 			return false;
 		}
 	}
-        //Encontrar o ID do user na API do discord
-        async getUser(id) {
-          try {
-              const user = await this.users.fetch(id);
-              return user;
-             } catch (err) {
-              console.log(err.message);
-              return false;
-           }
-          }
         //Setando a atividade do bot
         SetActivity(array = [], type = 'STREAMING') {
             this.Activity = array;

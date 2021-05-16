@@ -7,7 +7,7 @@
   •
   <a href="#4º--apoios">Apoios</a>
     •
-  <a href="https://github.com/HellpMe/Project-Columbine/blob/master/docs/TRANSLATES.md">Apoios</a>
+  <a href="https://github.com/HellpMe/Project-Columbine/blob/master/docs/TRANSLATES.md">Traduções</a>
 </p>
 
 ![](//)
