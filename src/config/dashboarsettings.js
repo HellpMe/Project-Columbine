@@ -1,7 +1,7 @@
 module.exports = {
     //Itens para dashboard
         dashboord: 'true',
-        domain: 'https://dashboardtst.herokuapp.com/',
+        domain: 'https://dashboardtst.herokuapp.com',
         port: '',
         clientID: '768000530361876490',
         clientSecret: 'RtWuEiVQu6obpNzD-xWjAO1eWbJcKaN6',
