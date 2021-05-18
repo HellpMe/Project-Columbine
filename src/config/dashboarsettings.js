@@ -1,10 +1,10 @@
 module.exports = {
     //Itens para dashboard
         dashboord: 'true',
-        domain: 'http://localhost',
-        port: '6565',
-        clientID: '838202798633517127',
-        clientSecret: 'sdh1tqGXM-a9kD9jjLNwnchhFEqe8Klx',
+        domain: 'https://dashboardtst.herokuapp.com/',
+        port: '',
+        clientID: '768000530361876490',
+        clientSecret: 'RtWuEiVQu6obpNzD-xWjAO1eWbJcKaN6',
         mongoUrl: 'mongodb+srv://PrCoJs:PrCo.Js@project-columbine.4tkrg.mongodb.net/Dashb?retryWrites=true&w=majority',
         verification: 'discordbot dashboard',
         description: 'discordbot',
