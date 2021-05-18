@@ -22,8 +22,6 @@ const config = {
         Language: 'pt-Br',
         Dashboard: true,
     },
-    //Mostrando o ping continuo do uptime do bot
-    PING_PORT: 65535,
     //MongoDB URL
     MongoDBURl: 'mongodb+srv://PrCoJs:PrCo.Js@project-columbine.4tkrg.mongodb.net/PrCo?retryWrites=true&w=majority',
     //Para ajudar na correção de bugs!
