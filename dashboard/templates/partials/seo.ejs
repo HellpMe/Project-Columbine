@@ -1,0 +1,13 @@
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="canonical" href="https://<%= domain %><%= path %>">
+<meta name="theme-color" content="#fff">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:title" content="<%- title %>">
+<meta property="og:site_name" content="<%- title %>">
+<meta property="og:description" content="<%- description %>">
+<meta name="description" content="<%- description %>">
+<% if (image) { %><meta property="og:image" content="https://<%= domain %>/pics/thumbs/<%= image %>" /><% } %>
+<% if (verification != null) { %>
+<meta name="google-site-verification" content="<%= verification %>">
+<% } %>

@@ -10,20 +10,14 @@ module.exports = async client => {
     client.appInfo = await client.fetchApplication();
     //Iniciando o Player de Audio
     client.manager.init(client.user.id)
-
+    //Iniciando a dashbord
+if(client.config.defaultSettings.Dashboard){
+    const Dashboard = require("../../dashboard/dashboard");
+    Dashboard(client); 
+}
     setInterval(async () =>{
         client.appInfo = await client.fetchApplication();
     }, 60000)
-    
-    //Puxando o localhost para iniciar os dados do bot
-    //Iniciando servidor web
-    try {
-        require('../http/api')(client);
-    //    require('../http/webhook/dbl')(client);
-    } catch (e) {  
-    console.log(e)
-        }
-
     //Adicionandos os status ao bot
     //WATCHING = ASSISTINDO, LISTENING = OUVINDO, PLAYING = JOGANDO faz aí os status que quiser
     //Pode se adicionar quantos status quiser, só seguir o exemplo abaixo!!
@@ -65,6 +59,14 @@ module.exports = async client => {
             client.emit('guildCreate', item);
         }
     });
+    //buscando servers novos
+	setInterval(async () => {
+	if (client.config.debug) console.log('Buscando Dados (Intervalo: 1 minuto)');
+    client.guilds.cache.forEach(async guild => {
+	guild.fetchGuildConfig();
+		});
+	}, 60000);
+
     //Excluindo as configs dos servidores que nos removeram enquanto o bot estava off
     const data = await GuildSchema.find({});
     if (data.length > client.guilds.cache.size) {

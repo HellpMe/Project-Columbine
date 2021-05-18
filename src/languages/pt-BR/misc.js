@@ -8,10 +8,6 @@ const languageData = {
 	USER_PERMISSION: (permission) => `Você está faltando a permissão de: \`${permissions[permission]}\`.`,
 	MISSING_ROLE: 'Não consegui encontrar esse cargo.',
 	NO_REASON: 'Nenhuma razão dada.',
-	// external files/plugins
-	INCORRECT_DELIMITERS: 'Use um dos seguintes delimitadores de tempo: `d`,  `h`,  `m`, `s`.',
-	NOT_NUMBER:'Deve ser um número.',
-	MAX_TIME: 'Não pode ser superior a 10 dias.',
 };
 
 const translate = (key, args) => {
