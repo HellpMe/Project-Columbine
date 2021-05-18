@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 const chalk = require('chalk'),
-	pingport = require('./helpers/pingport'),
 	{ Webhook_ID, Webhook_Token } = require('./config/webhooks'),
 	{ MessageEmbed, ShardingManager, WebhookClient } = require('discord.js');
 
@@ -48,6 +47,4 @@ shard.on('message', async (shard, message) => {
 		embeds: [shardOnEmbed],
 	});*/
 });
-
-pingport.init();
 shard.spawn();
