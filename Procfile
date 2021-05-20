@@ -1,2 +1,2 @@
 worker: node .
-web: node dashboard-run.js
+web: node src/dashboard-run.js
