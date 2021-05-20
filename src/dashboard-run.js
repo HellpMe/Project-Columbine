@@ -7,7 +7,7 @@ require('dotenv').config()
 client.on('ready', () => {
  if ( aconfig.dashboord = "true") {
   console.log("[HOST] Getting dashboard config file...")
-  const webrun = require("./dashboard/dashboard");
+  const webrun = require("../dashboard/dashboard");
   webrun(client);
  } else {
   console.log("[HOST] Dashboard não ativa!!");
