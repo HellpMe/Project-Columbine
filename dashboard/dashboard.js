@@ -21,6 +21,10 @@ const app = express();
 app.use(express.static('dashboard/static'));
 //puxar as configs//porta
 const config = require('../src/config/dashboarsettings');
+    //itens 
+    const domain = config.domain
+    const clientID = config.clientID
+    const secret = config.clientSecret
 //enviar msg de start no console
 console.log('Dashboard Starded...');
 
@@ -34,9 +38,9 @@ passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((obj, done) => done(null, obj));
 
 passport.use(new Strategy({
-clientID: config.clientID,
-clientSecret: config.clientSecret,
-callbackURL: `${config.domain}/callback`,
+clientID: `${clientID}`,
+clientSecret: `${secret}`,
+callbackURL: `${domain}/callback`,
 scope: ["identify", "guilds"]
 },
  (accessToken, refreshToken, profile, done) => { 
@@ -75,11 +79,11 @@ scope: ["identify", "guilds"]
         user: req.isAuthenticated() ? req.user : null,
         verification: config.verification,
         description: config.description,
-        domain: config.domain,
+        domain: domain,
         url: res,
         title: client.username,
         req: req,
-        image: `${config.domain}/logo.png`,
+        image: `${domain}/logo.png`,
         name: client.username,
         tag: client.tag,
         arc: config.arc,
@@ -140,7 +144,7 @@ app.get("/server", (req, res) => {
     res.redirect(`https://discord.gg/FqdH4sfKBg`)
 });
 app.get('/invite', function(req, res) {
-    res.redirect(`https://discord.com/oauth2/authorize?client_id=${config.clientID}&redirect_uri=${config.domain}/thanks&response_type=code&scope=bot&permissions=490073207`)
+    res.redirect(`https://discord.com/oauth2/authorize?client_id=${config.clientID}&redirect_uri=${domain}/thanks&response_type=code&scope=bot&permissions=490073207`)
 });
 app.get('/thanks', function(req, res) {
     renderTemplate(res, req, "thanks.ejs")
@@ -373,7 +377,7 @@ app.post("/dashboard/:guildID", checkAuth, async (req, res) => {
 
 
 
-    if (fullUrl == config.domain || fullUrl == `${config.domain}/style.css` || fullUrl == `${config.domain}/style.css` || fullUrl == `${config.domain}/favico.ico` ) {
+    if (fullUrl == domain || fullUrl == `${domain}/style.css` || fullUrl == `${domain}/style.css` || fullUrl == `${domain}/favico.ico` ) {
 
       renderTemplate(res, req, "index.ejs");
 
