@@ -21,7 +21,6 @@ const app = express();
 app.use(express.static('dashboard/static'));
 //puxar as configs//porta
 const config = require('../src/config/dashboarsettings');
-const port = config.port || 6565;
 //enviar msg de start no console
 console.log('Dashboard Starded...');
 
@@ -375,5 +374,5 @@ app.use(function(req, res, next){
   renderTemplate(res, req, '404.ejs');
   });
   console.log('Todas configurações efetuadas, Iniciando Dashboard!');
-  app.listen(port, null, null, () => console.log(`DashBoard Iniciada na porta: ${port}.`));
+  app.listen(config.port, null, null, () => console.log(`DashBoard Iniciada na porta: ${config.port}.`));
 }
