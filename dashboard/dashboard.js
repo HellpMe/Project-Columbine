@@ -368,6 +368,21 @@ app.post("/dashboard/:guildID", checkAuth, async (req, res) => {
       settings: storedSettings,
     });
   });
+  app.get("*", (req, res) => {
+    var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+
+
+
+    if (fullUrl == config.domain || fullUrl == `${config.domain}/style.css` || fullUrl == `${config.domain}/style.css` || fullUrl == `${config.domain}/favico.ico` ) {
+
+      renderTemplate(res, req, "index.ejs");
+
+
+    } else {
+
+      renderTemplate(res, req, "404.ejs");
+    }
+  });
 //404
 app.use(function(req, res, next){
   res.status(404);
