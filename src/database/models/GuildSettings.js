@@ -5,6 +5,18 @@ const guildSchema = Schema({
 	guildID: String,
 	guildName: String,
     prefix: { type: String, default: '!' },
+    //Premium Guilds
+    isPremium: { type: String, default: false},
+    Premium: {
+        redeemedBy: {
+            id: {type: String, default: null},
+            tag: {type: String, default: null},
+        },      
+  redeemedAt: { type: String, default: null },
+  expiresAt: { type: String, default: null },
+  plan: { type: String, default: null },
+    },
+    leaves: { type: Array, default: [] },
     //DJ Roles
     MusicDJ: { type: Boolean, default: false },
 	MusicDJRole: { type: String, default: '00' },

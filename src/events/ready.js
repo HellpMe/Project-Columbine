@@ -59,14 +59,6 @@ if(client.config.defaultSettings.Dashboard){
             client.emit('guildCreate', item);
         }
     });
-    //buscando servers novos
-	setInterval(async () => {
-	if (client.config.debug) console.log('Buscando Dados (Intervalo: 1 minuto)');
-    client.guilds.cache.forEach(async guild => {
-	guild.fetchGuildConfig();
-		});
-	}, 60000);
-
     //Excluindo as configs dos servidores que nos removeram enquanto o bot estava off
     const data = await GuildSchema.find({});
     if (data.length > client.guilds.cache.size) {
@@ -87,4 +79,11 @@ if(client.config.defaultSettings.Dashboard){
             }
         }
     }
+    //buscando servers novos
+	setInterval(async () => {
+        if (client.config.debug) console.log('Buscando Dados (Intervalo: 1 minuto)');
+        client.guilds.cache.forEach(async guild => {
+        guild.fetchGuildConfig();
+            });
+        }, 60000);
 }

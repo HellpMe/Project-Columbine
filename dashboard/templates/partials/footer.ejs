@@ -1,19 +1,9 @@
 </div>
 <footer class="footer">
-<% if (config.author) { %>
-<span class="left">Created by: <%= config.author %></span>
-<% } %>
 <% if (config.status) { %>
 <a href="/status">Status</a>
 <% } %>
 <span> | </span>
-<% if (config.authorwebsite) { %>
-<a href="/author" target="_blank">Author</a>
-<% } %>
-<span> | </span>
-<% if (github) { %>
-<a href="/github" target="_blank">Github Repo</a>
-<% } %>
 </footer>
 <script src="https://<%= domain %>/js/index.js"></script>
 </body>
