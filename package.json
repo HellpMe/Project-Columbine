@@ -35,7 +35,7 @@
     "erela.js-spotify": "^1.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
-    "firebase": "^8.3.0",
+    "firebase": "^8.6.5",
     "fs": "^0.0.2",
     "genius-lyrics-api": "^3.0.6",
     "googleapis": "^73.0.0",
