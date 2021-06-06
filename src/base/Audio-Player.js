@@ -10,7 +10,7 @@ module.exports = async (client) => {
 
     client.manager = new Manager({
         nodes: [
-            { host: 'lavalink-heroku-prcojs.herokuapp.com', port: 80, password: 'PrCoJs'},
+            { host: 'localhost', port: 3000, password: 'PrCoJs'},
         ],
         plugins: [
             new Spotify({ clientID, clientSecret }),

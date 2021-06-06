@@ -1,0 +1,17 @@
+[
+    {
+        "name": "pt-BR",
+        "nativeName": "Portugues",
+        "moment": "pt",
+        "defaultMomentFormat": "DD MM YYYY",
+        "default": true,
+        "aliases": [
+            "Português",
+            "pt",
+            "pt-Br",
+            "pt-br",
+            "pt-BR",
+            "PT-BR"
+        ]
+    }
+]

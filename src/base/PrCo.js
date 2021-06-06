@@ -18,6 +18,9 @@ module.exports = class PrCo extends Client {
         this.config = require('../config/config')
         this.webhooks = require('../config/webhooks')
 
+        //Para as traduções do client
+		this.languages = require('../languages/language-meta.json');
+
         //Atividade do bot
         this.Activity = [];
         this.PresenceType = 'PLAYING';
@@ -58,16 +61,11 @@ module.exports = class PrCo extends Client {
                 console.log(e);
             }
         }
-    //para as traduções "adição futura"
-    translate(language, key, args) {
-		let languageFile;
-		if (key.includes('/')) {
-			const word = key.split('/');
-			languageFile = require(`../languages/${language}/${word[0]}/translation`);
-			return languageFile(word[1], args);
-		} else {
-			languageFile = require(`../languages/${language}/misc`);
-			return languageFile(key, args);
-		}
+	//Enviar a tradução para o comando usado
+	translate(key, args, locale) {
+		if (!locale) locale = this.config.defaultSettings.Language;
+		const language = this.translations.get(locale);
+		if (!language) throw 'Linguagem enviada invalida!';
+		return language(key, args);
 	}
 }

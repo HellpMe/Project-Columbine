@@ -1,3 +1,4 @@
+const { Embed } = require('../../structures');
 //Puxando as Dependencias/Pastas/Arquivos nescessarios
 module.exports = {
 	name: 'play',
@@ -9,29 +10,23 @@ module.exports = {
        //Verificando se há o cargo de DJ no servidor
 	   if (message.guild.roles.cache.get(settings.MusicDJRole)) {
 		if (!message.member.roles.cache.has(settings.MusicDJRole)) {
-			return message.channel.error(settings.Language, 'MUSIC/MISSING_DJROLE').then(m => m.delete({ timeout: 10000 }));
+			return message.channel.error('misc:MISSING_ROLE').then(m => m.delete({ timeout: 10000 }));
 		}
 	}
 
 	//Verificando se o USER está em um canal de VOZ
-	if (!message.member.voice.channel) return message.channel.send(client.translate(settings.Language, 'MUSIC/MISSING_VOICE'));
+	if (!message.member.voice.channel) return message.channel.send('music/play:NOT_VC');
 
 	//Vereificando se o USER está no mesmo canal de VOZ do bot
 	if (client.manager.players.get(message.guild.id)) {
-		if (message.member.voice.channel.id != client.manager.players.get(message.guild.id).voiceChannel) return message.channel.send(client.translate(settings.Language, 'MUSIC/NOT_VOICE').then(m => m.delete({ timeout: 6000})));
+		if (message.member.voice.channel.id != client.manager.players.get(message.guild.id).voiceChannel) return message.channel.send('music/play:NOT_VC').then(m => m.delete({ timeout: 6000}));
 	}
 
 	//Verificando a permissão do BOT para se CONECTAR ao canal de VOZ
-	if (!message.member.voice.channel.permissionsFor(message.guild.me).has('CONNECT')) {
-		console.log(`Faltando a permissão: \`CONNECT\` no servidor [${message.guild.id}].`);
-		return message.channel.send(client.translate(settings.Language, 'MISSING_PERMISSION', 'CONNECT').then(m => m.delete({ timeout: 10000})));
-	}
+	if (!message.member.voice.channel.permissionsFor(message.guild.me).has('CONNECT'));
 
 	//Verificando a permissão do BOT para se FALAR no canal de VOZ
-	if (!message.member.voice.channel.permissionsFor(message.guild.me).has('SPEAK')) {
-		console.log(`Faltando a permissão: \`SPEAK\` no servidor [${message.guild.id}].`);
-		return message.channel.send(client.translate(settings.Language, 'MISSING_PERMISSION', 'SPEAK').then(m => m.delete({ timeout: 10000})));
-	}
+	if (!message.member.voice.channel.permissionsFor(message.guild.me).has('SPEAK'));
 
 	//Criando o Player de musica
 	let player;
@@ -45,7 +40,7 @@ module.exports = {
 	} catch (err) {
 		if (message.deletable) message.delete();
 		console.log(`O Comando: 'play' ocorreu o seguinto erro: ${err.message}.`);
-		return message.channel.send(client.translate(settings.Language, 'ERROR_MESSAGE', err.message));
+		return message.channel.send('misc:ERROR_MESSAGE', { ERROR: err.message }).then(m => m.delete({ timeout: 5000 }));
 	}
 
 	//Vericiando se o USER envio algo
@@ -59,9 +54,9 @@ module.exports = {
 					args.push(url);
 				}
 			}
-			if (!args[0]) return message.channel.send(client.translate(settings.Language, 'MUSIC/INVALID_FILE').then(m => m.delete({ timeout: 10000})));
+			if (!args[0]) return message.channel.send('music/play:INVALID_FILE').then(m => m.delete({ timeout: 10000}));
 		} else {
-			return message.channel.send(client.translate(settings.Language, 'MUSIC/NO_ARGS').then(m => m.delete({ timeout: 10000})));
+			return message.channel.send('music/play:NO_INPUT').then(m => m.delete({ timeout: 10000}));
 			
 		}
 	}
@@ -77,20 +72,22 @@ module.exports = {
 			throw res.exception;
 		}
 	} catch (err) {
-		return message.channel.send(client.translate(settings.Language, 'MUSIC/ERROR', err.message).then(m => m.delete({ timeout: 5000 })));
+		return message.channel.send('music/play:ERROR', { ERROR: err.message }).then(m => m.delete({ timeout: 5000 }))
 	}
 	
 	//Setando oque fazer com a pesquisa "MUSICA"
 	if (res.loadType == 'NO_MATCHES') {
 		//Caso ocorra um erro ao carregar a musica
 		if (!player.queue.current) player.destroy();
-		return message.channel.send(client.translate(settings.Language, 'MUSIC/NO_SONG'));
+		return message.channel.send('music/play:NO_SONG');
 	} else if (res.loadType == 'PLAYLIST_LOADED') {
 		//Fazendo o bot conectar-se ao canal caso ele não esteja
 		if (player.state !== 'CONNECTED') player.connect();
 		//Enviar uma mensagem mostrando quantas musicas foram adicionadas
-		message.channel.send({ embed:{ color: message.member.displayHexColor, description: `Queued **${res.tracks.length}** tracks` } });
-		//Adicionando as musicas na fila
+		const embed = new Embed(client, message.guild)
+		.setColor(message.member.displayHexColor)
+		.setDescription(message.translate('music/play:QUEUED', { NUM: res.tracks.length }));
+	message.channel.send(embed);//Adicionando as musicas na fila
 		player.queue.add(res.tracks);
 		//Tocando as musicas caso esteja pronto
 		if (!player.playing && !player.paused && player.queue.totalSize === res.tracks.length) player.play();

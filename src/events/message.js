@@ -14,7 +14,7 @@ module.exports = async (client, message) => {
     if (Object.keys(settings).length == 0) return;
 
     if (message.author.bot) return;
-    if (message.channel.type === 'dm') return message.channel.send(client.translate(settings.Language, 'EVENTS/GUILD_COMMAND_ERROR')); 
+    if (message.channel.type === 'dm') return message.channel.send('events/message:GUILD_ONLY');
     
     //Puxando do banco de dados o prefixo!
     let prefix = await db.ref(`Configurações/Servidores/${message.guild.id}/Prefixo`).once('value')
@@ -55,8 +55,8 @@ module.exports = async (client, message) => {
         const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
             
         if (now < expirationTime) {
-            const timeleft = (expirationTime - now) / 1000
-            return message.channel.send(client.translate(settings.Language,'EVENTS/COMMAND_COOLDOWN', timeleft.toFixed(1))).then(m => m.delete({ timeout:4000 }));
+            const timeLeft = (expirationTime - now) / 1000;
+            return message.channel.send('events/message:COMMAND_COOLDOWN', { NUM: timeLeft.toFixed(1) }).then(m => m.delete({ timeout:5000 }));
         }
     }
     //Puxando os iniciadores dos comandos

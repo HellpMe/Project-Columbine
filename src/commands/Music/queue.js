@@ -1,3 +1,5 @@
+const { Embed } = require('../../structures')
+
 //Criando as paginas
 function paginator(page, msg, queue, Currentposition) {
 	if (page == 1) {
@@ -45,28 +47,24 @@ module.exports = {
        //Verificando se há o cargo de DJ no servidor
 	   if (message.guild.roles.cache.get(settings.MusicDJRole)) {
 		if (!message.member.roles.cache.has(settings.MusicDJRole)) {
-			return message.channel.error(settings.Language, 'MUSIC/MISSING_DJROLE').then(m => m.delete({ timeout: 10000 }));
+			return message.channel.error('misc:MISSING_ROLE').then(m => m.delete({ timeout: 10000 }));
 		}
 	}
     //Verificando se há musicas na fila/Reproduzidas
     const player = client.manager.players.get(message.guild.id);
-    if (!player) return message.channel.send(client.translate(settings.Language, 'MUSIC/NO_QUEUE').then(m => m.delete({ timeout: 5000 })));
+    if (!player) return message.channel.send('misc:NO_QUEUE').then(m => m.delete({ timeout: 5000 }));
 
 	//Verificando se o bot tem permissões para adicionar Reações
-	if (!message.channel.permissionsFor(message.guild.me).has('ADD_REACTIONS')) {
-		console.log(`Missing permission: \`ADD_REACTIONS\` no servidor [${message.guild.id}].`);
-		return message.channel.send(client.translate(settings.Language, 'MISSING_PERMISSION', 'ADD_REACTIONS').then(m => m.delete({ timeout: 10000 })));
-	}
+	if (!message.channel.permissionsFor(message.guild.me).has('ADD_REACTIONS'));
+
 	//Verificando se o bot tem permissões para apagar emoji
-	if (!message.channel.permissionsFor(message.guild.me).has('MANAGE_MESSAGES')) {
-		console.log(`Missing permission: \`MANAGE_MESSAGES\` no servidor [${message.guild.id}].`);
-		return message.channel.send(client.translate(settings.Language, 'MISSING_PERMISSION', 'MANAGE_MESSAGES').then(m => m.delete({ timeout: 10000 })));
-	}
+	if (!message.channel.permissionsFor(message.guild.me).has('MANAGE_MESSAGES'));
 	//Pegando a lista de musica
 	const queue = player.queue;
 	if (queue.size == 0) {
-		message.channel.send('```ml\n A fila está vazia Zzz```');
-		return;
+		const embed = new Embed(client, message.guild)
+			.setTitle('music/queue:EMPTY');
+		return message.channel.send(embed);
 	}
 	//Display da lista
 	let resp = '```ml\n';

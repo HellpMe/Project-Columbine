@@ -21,8 +21,9 @@
     </div>
     <ul class="menu">
     <% if (user) { %>
-    <li><a href="https://<%= hostname %>/server" target="_blank" rel="noopener">Support</a></li>
-     <li><a href="https://<%= hostname %>/commands" target="_blank" rel="noopener">Commands</a></li>
+    <li><a href="https://<%= hostname %>/status" target="_blank" rel="noopener">Status</a></li>
+    <li><a href="https://<%= hostname %>/server" target="_blank" rel="noopener">Suporte</a></li>
+     <li><a href="https://<%= hostname %>/commands" target="_blank" rel="noopener">Comandos</a></li>
     <% if (user.avatar) {
      avatar = "https://cdn.discordapp.com/avatars/" + user.id + "/" + user.avatar + ".png?size=128";
     } else {

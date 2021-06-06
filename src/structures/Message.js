@@ -32,21 +32,23 @@ module.exports = Structures.extend('Message', Message => {
 			}
 			// search user
 			if (this.args[0]) {
-				const members = [];
-				const indexes = [];
+				// fetch all members before search
+				this.guild.members.fetch();
+
+				// search for members
+				const members = [], indexes = [];
 				this.guild.members.cache.forEach(member => {
 					members.push(member.user.username);
 					indexes.push(member.id);
 				});
-				const match = sm.findBestMatch(this.args.join(' '), members);
-				if (match.bestMatch.rating != 0) {
+				const match = findBestMatch(this.args.join(' '), members);
+				if (match.bestMatch.rating >= 0.1) {
 					const username = match.bestMatch.target,
 						member = this.guild.members.cache.get(indexes[members.indexOf(username)]);
 					users.push(member);
 				}
 			}
-
-			// adicionar autor no final
+			// add author at the end
 			users.push(this.member);
 			return users;
 		}
@@ -109,6 +111,11 @@ module.exports = Structures.extend('Message', Message => {
 			// adicionar URLs de avatar aos arquivo
 			file.push(...this.getMember().map(member => member.user.displayAvatarURL({ format: 'png', size: 1024 })));
 			return file;
+		}
+		translate(key, args) {
+			const language = this.client.translations.get(this.guild ? this.guild.settings.Language : 'pt-BR');
+			if (!language) throw 'Mensagem: idioma inválido definido nos dados.';
+			return language(key, args);
 		}
 	}
 	return CustomMessage;

@@ -10,11 +10,11 @@ module.exports = async client => {
     client.appInfo = await client.fetchApplication();
     //Iniciando o Player de Audio
     client.manager.init(client.user.id)
-    //Iniciando a dashbord
+/*    //Iniciando a dashbord
 if(client.config.defaultSettings.Dashboard){
     const Dashboard = require("../../dashboard/dashboard");
     Dashboard(client); 
-}
+}*/
     setInterval(async () =>{
         client.appInfo = await client.fetchApplication();
     }, 60000)

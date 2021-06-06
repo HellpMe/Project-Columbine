@@ -1,2 +1,9 @@
 node_modules/
 Lavalink/logs
+src/config/config.js
+src/database/db.js
+src/config/webhooks.js
+src/config/dashboarsettings.js
+dashboard/
+Dockerfile
+.dockerignore

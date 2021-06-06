@@ -1,0 +1,9 @@
+{
+	"ERROR_MESSAGE": "Ocorreu o seguinte erro {{ERROR}}. Tente novamente ou entre em contato com o suporte.",
+	"INCORRECT_FORMAT": "Use o formato: `{{EXAMPLE}}`.",
+	"MISSING_PERMISSION": "Estou sem a permissão:: `{{PERMISSIONS}}`.",
+	"USER_PERMISSION": "Você está precisa da permissão de: `{{PERMISSIONS}}`. para executar esse comando!",
+	"MISSING_ROLE": "Você nescessita do cargo de DJ",
+	"NO_REASON": "Nenhuma razão fornecida",
+	"NO_QUEUE": "teste123"
+}

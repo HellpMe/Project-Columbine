@@ -1,0 +1,4 @@
+{
+    "GUILD_ONLY": "Meus comandos podem ser executados apenas em servidores!!",
+    "COMMAND_COOLDOWN": "Você deve esperar {{NUM}} para usar novamente esse comando"
+  }

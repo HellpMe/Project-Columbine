@@ -1,5 +1,5 @@
 //Puxando as Dependencias/Pastas/Arquivos nescessarios
-const { MessageEmbed } = require('discord.js'),
+const { Embed } = require('../../structures'),
 	delay = ms => new Promise(res => setTimeout(res, ms))
 
 
@@ -10,28 +10,28 @@ const { MessageEmbed } = require('discord.js'),
 		description: 'Ative o modo NightCore nas musicas!',
 	
 		run: async (client, message, args, settings) => {
-       //Verificando se há o cargo de DJ no servidor
+       //Verificando se há o cargo de DJ no servidor!
 	   if (message.guild.roles.cache.get(settings.MusicDJRole)) {
 		if (!message.member.roles.cache.has(settings.MusicDJRole)) {
-			return message.channel.error(settings.Language, 'MUSIC/MISSING_DJROLE').then(m => m.delete({ timeout: 10000 }));
+			return message.channel.error('misc:MISSING_ROLE').then(m => m.delete({ timeout: 10000 }));
 		}
 	}
 
     //Verificando se há musicas na fila/Reproduzidas
     const player = client.manager.players.get(message.guild.id);
-    if (!player) return message.channel.send(client.translate(settings.Language, 'MUSIC/NO_QUEUE').then(m => m.delete({ timeout: 5000 })));
+    if (!player) return message.channel.send('misc:NO_QUEUE').then(m => m.delete({ timeout: 5000 }));
 
     //Verificando se o USER está no mesmo canal que VOZ que o BOT
-    if (message.member.voice.channel.id !== player.voiceChannel) return message.channel.send(client.translate(settings.Language, 'MUSIC/NOT_VOICE').then(m => m.delete({ timeout: 5000 })));
+    if (message.member.voice.channel.id !== player.voiceChannel) return message.channel.send('misc:NOT_VOICE').then(m => m.delete({ timeout: 5000 }));
 
     //Criando o player 'NightCore'
     if (args[0] && (args[0].toLowerCase() == 'reset' || args[0].toLowerCase() == 'off')) {
         player.resetFilter();
-        const msg = await message.channel.send(`Desligando o modo '\`NightCore\`', aguarde alguns segundos..`);
-        const embed = new MessageEmbed()
-            .setDescription(`Modo '\`NightCore\`' desligado.`);
-            await delay(7500);
-            return msg.edit('', embed);
+			const msg = await message.channel.send(message.translate('music/nightcore:OFF_NC'));
+			const embed = new Embed(client, message.guild)
+				.setDescription(message.translate('music/nightcore:DESC_2'));
+			await delay(7000);
+			return msg.edit('', embed);
     } else {
         player.setFilter({
             equalizer: [
@@ -41,11 +41,12 @@ const { MessageEmbed } = require('discord.js'),
             timescale: { pitch: 1.2 },
             tremolo: { depth: 0.3, frequency: 14 },
         });
-        const msg = await message.channel.send(`Ligando o modo '\`NightCore\`', aguarde alguns segundos..`);
-        const embed = new MessageEmbed()
-            .setDescription(`Modo '\`NightCore\`' ligado.`);
-            await delay(7000);
-            return msg.edit('', embed);
+        const msg = await message.channel.send(message.translate('music/nightcore:ON_NC'));
+        const embed = new Embed(client, message.guild)
+            .setDescription(message.translate('music/nightcore:DESC_1'));
+        await delay(7000);
+        player.speed = 1.2;
+        return msg.edit('', embed);
         }
     }
 };

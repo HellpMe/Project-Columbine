@@ -9,7 +9,7 @@ module.exports = {
 
     run: async (client, message, args, settings) => {
         if (!client.config.ownerID.includes(message.author.id)) {
-            return message.channel.send(client.translate(settings.Language, 'HOST/EVAL_NO_OWNER'))
+            return message.channel.send('host/eval:EVAL_NO_OWNER')
             }
             let code = args.slice(0).join(" ");
             

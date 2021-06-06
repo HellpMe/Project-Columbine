@@ -1,0 +1,13 @@
+{
+    "DESCRIPTION": "Veja as informações em tempo Real do lavalink",
+    "USAGE": "lstatus",
+    "AUTHOR": "Lavalink Statistics: {{NAME}}",
+    "PLAYERS": "Playing Players/Players",
+    "PLAYER_STATS": "```{{PLAYING}} playing / {{PLAYERS}} players```",
+    "MEMORY": "Memory",
+    "MEMORY_STATS": "```Alocada: {{ALL}} MB\nUsada: {{USED}} MB\nLivre: {{FREE}} MB\nReservado: {{RESERVE}} MB```",
+    "CPU": "CPU",
+    "CPU_STATS": "```Cores: {{CORES}}\nUso do Sistema: {{SYSLOAD}}%\nUso do lavalink: {{LVLLOAD}}%```",
+    "UPTIME": "Uptime",
+    "UPTIME_STATS": "```{{NUM}}```"
+  }

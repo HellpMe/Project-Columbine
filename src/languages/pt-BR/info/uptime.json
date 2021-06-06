@@ -1,0 +1,5 @@
+{
+    "DESCRIPTION": "Veja o tempo de atividade do bot",
+    "USAGE": "uptime",
+    "DESC": "📶 Eu estou online há: {{TIME}}."
+  }

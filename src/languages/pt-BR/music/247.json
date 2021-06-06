@@ -1,0 +1,5 @@
+{
+    "DESCRIPTION": "Permanece no canal de voz mesmo que não haja ninguém nele.",
+    "USAGE": "24/7",
+    "RESP": "modo 24/7 está {{TOGGLE}}."
+  }

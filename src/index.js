@@ -17,7 +17,7 @@ const shard = new ShardingManager('./src/PrCo.js', {
 shard.on('shardCreate', async (shard) => {
 	console.log(chalk.yellowBright('[SHARD LAUNCHED]'), `Shard ${shard.id} has launched.`);
 
-/*	const shardEmbed = new MessageEmbed()
+	const shardEmbed = new MessageEmbed()
 		.setTitle(`🟢 **Shard ${shard.id}** foi lançado.`)
 		.setColor('RANDOM')
 		.setTimestamp();
@@ -27,12 +27,12 @@ shard.on('shardCreate', async (shard) => {
 		username: 'Shard Manager',
 		avatarURL: 'https://i.ytimg.com/vi/3mp0DbLBNuM/maxresdefault.jpg', //imagem que você queira que apareça sobre os status da inicialização do shard
 		embeds: [shardEmbed],
-	});*/
+	});
 });
 
 shard.on('message', async (shard, message) => {
 	console.log(chalk.yellowBright(`[SHARD ${shard.id}]`), `${message._eval} : ${message._result}`);
-/*
+
 	const shardOnEmbed = new MessageEmbed()
 		.setTitle(`🟢 **Shard ${shard.id}** enviou uma mensagem.`)
 		.addField('Message Eval', message._eval, true)
@@ -45,6 +45,6 @@ shard.on('message', async (shard, message) => {
 		username: 'Shard Manager',
 		avatarURL: 'https://i.ytimg.com/vi/3mp0DbLBNuM/maxresdefault.jpg',//aqui tambem
 		embeds: [shardOnEmbed],
-	});*/
+	});
 });
 shard.spawn();

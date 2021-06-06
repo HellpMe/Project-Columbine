@@ -1,0 +1,5 @@
+{
+    "DESCRIPTION": "Mostra todas as musicas na fila",
+    "USAGE": "queue",
+    "EMPTY": "A fila de musicas está vazia"
+  }

@@ -1,0 +1,6 @@
+{
+    "DESCRIPTION": "Busque as letra de uma musica",
+    "USAGE": "Letras [song]",
+    "NO_LYRICS": "Nenhuma letra encontrada",
+    "FOOTER": "Pedido por {{TAG}}"
+  }

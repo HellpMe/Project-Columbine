@@ -1,0 +1,12 @@
+{
+    "DESCRIPTION": "Almente o grave no Player",
+    "USAGE": "bassboost [value]",
+    "ON_BB": "Iniciando modo **bassboost**. Isso pode demorar alguns segundos...",
+    "DESC_1": "Modo **bassboost**. iniciado!",
+    "OFF_BB": "Desligando modo **bassboost**. Isso pode demorar alguns segundos...",
+    "DESC_2": "Modo **bassboost**. desligado",
+    "INVALID": "Insira apenas numeros validos!",
+    "SET_BB": "Configurando a frequencia há **{{DB}}dB**. Isso pode demorar alguns segundos...",
+    "DESC_3": "Bassboost Setado há: **{{DB}}dB**",
+    "NO_QUEUE": "Nenhuma musica tocando no servidor!"
+  }

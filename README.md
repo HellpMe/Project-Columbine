@@ -11,7 +11,6 @@
 </p>
 
 ![](//)
-
 ## `1º` *|* Introdução:
 Project-Columbine Bot é um bot de código aberto, originalmente era para ser um substituto de um bot já online. Porem depois que começei a faze-lo deixei de querer substituir o antigo e criar um novo para deixar dedicado a comunidade em si.
 

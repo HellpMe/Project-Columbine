@@ -1,0 +1,7 @@
+{
+    "DESCRIPTION": "Altere o volume do player",
+    "USAGE": "volume <Number>",
+    "CURRENT": "🔊 Volume atual do player é : **{{NUM}}%**.",
+    "UPDATED": "🔊 Player do volume setado há **{{NUM}}%**.",
+    "TOO_HIGH": "Envie um numero valido entre 0 e 500!"
+  }
