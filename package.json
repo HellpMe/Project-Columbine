@@ -54,7 +54,7 @@
     "util": "^0.12.3"
   },
   "devDependencies": {
-    "eslint": "^7.25.0"
+    "eslint": "^7.28.0"
   },
   "engines": {
     "node": "15.x",
